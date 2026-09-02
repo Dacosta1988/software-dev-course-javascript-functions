@@ -89,3 +89,58 @@ reusable functions that solve specific tasks. This activity encourages:
 // - Explain how your team approached the design and testing process
 
 // ✅ Bonus: Can you extend any of the functions to be more flexible or reusable?
+
+
+// ============================================
+// Solution
+// ============================================
+
+// Task 1 pseudocode:
+// 1. Receive a name and role.
+// 2. Capitalize the first letter of the role.
+// 3. Return the formatted badge text.
+function generateBadge(name, role) {
+    const formattedRole = role.charAt(0).toUpperCase() + role.slice(1).toLowerCase();
+    return "Name: " + name + ", Role: " + formattedRole;
+}
+
+// Task 2 pseudocode:
+// 1. Multiply the attendee count by the cost per attendee.
+// 2. If there are more than 100 attendees, keep 90% of the total.
+// 3. Return the final cost.
+function calculateCost(numberOfAttendees, costPerAttendee) {
+    let totalCost = numberOfAttendees * costPerAttendee;
+
+    if (numberOfAttendees > 100) {
+        totalCost = totalCost * 0.90;
+    }
+
+    return totalCost;
+}
+
+// Task 3 pseudocode:
+// 1. Check whether the email contains both required characters.
+// 2. Return the resulting true or false value.
+function isValidEmail(email) {
+    return email.includes("@") && email.includes(".");
+}
+
+
+// ============================================
+// Test Cases
+// ============================================
+
+console.log("Badge tests:");
+console.log(generateBadge("Alice", "speaker"));
+console.log(generateBadge("Jordan", "ATTENDEE"));
+console.log(generateBadge("Sam", "volunteer"));
+
+console.log("\nCost tests:");
+console.log("50 attendees at $25:", calculateCost(50, 25));       // 1250, no discount
+console.log("100 attendees at $25:", calculateCost(100, 25));    // 2500, no discount
+console.log("120 attendees at $25:", calculateCost(120, 25));    // 2700, 10% discount
+
+console.log("\nEmail tests:");
+console.log("student@example.com:", isValidEmail("student@example.com")); // true
+console.log("studentexample.com:", isValidEmail("studentexample.com"));   // false
+console.log("student@examplecom:", isValidEmail("student@examplecom"));   // false
